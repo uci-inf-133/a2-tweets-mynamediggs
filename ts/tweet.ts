@@ -2,21 +2,47 @@ class Tweet {
 	private text:string;
 	time:Date;
 
-	constructor(tweet_text:string, tweet_time:string) {
+	constructor(tweet_text:string, tweet_time:string) 
+    {
         this.text = tweet_text;
 		this.time = new Date(tweet_time);//, "ddd MMM D HH:mm:ss Z YYYY"
 	}
 
 	//returns either 'live_event', 'achievement', 'completed_event', or 'miscellaneous'
-    get source():string {
+    get source():string 
+    {
         //TODO: identify whether the source is a live event, an achievement, a completed event, or miscellaneous.
-        return "unknown";
+
+        var description:string = this.text;
+        
+        if(description.startsWith("Just"))
+        {
+            return "completed_event";
+        }
+        else if(description.startsWith("Watch my run"))
+        {   
+            return "live_event";
+        }
+        else if(description.startsWith("Achieved"))
+        {
+            return "achievement";
+        }
+        else
+        {
+            return "miscellaneous";
+        }
     }
 
     //returns a boolean, whether the text includes any content written by the person tweeting.
-    get written():boolean {
+    get written():boolean 
+    {
         //TODO: identify whether the tweet is written
-        return false;
+        if(this.text.includes("Check it out!"))
+        {
+            return false;
+        }
+
+        return true; 
     }
 
     get writtenText():string {
@@ -24,11 +50,13 @@ class Tweet {
             return "";
         }
         //TODO: parse the written text from the tweet
-        return "";
+
+        var link_index = this.text.indexOf("https");
+        return this.text.substring(0, link_index-1);
     }
 
     get activityType():string {
-        if (this.source != 'completed_event') {
+        if (this.source != "completed_event") {
             return "unknown";
         }
         //TODO: parse the activity type from the text of the tweet
@@ -36,7 +64,7 @@ class Tweet {
     }
 
     get distance():number {
-        if(this.source != 'completed_event') {
+        if(this.source != "completed_event") {
             return 0;
         }
         //TODO: prase the distance from the text of the tweet

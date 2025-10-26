@@ -13,6 +13,10 @@
 
 3. What online resources did you consult when completing this assignment? (list sites like StackOverflow or specific URLs for tutorials; describe queries to Generative AI or use of AI-based code completion)
 
+https://www.typescripttutorial.net/typescript-tutorial/typescript-getters-setters/
+https://dmitripavlutin.com/javascript-fill-array/
+
+tsc -p C:\INF133\a2-tweets-mynamediggs/tsconfig.json --watch
 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
