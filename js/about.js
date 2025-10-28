@@ -10,10 +10,10 @@ function parseTweets(runkeeper_tweets) {
 	});
 	
 	//This line modifies the DOM, searching for the tag with the numberTweets ID and updating the text.
-	//It works correctly, your task is to update the text of the other tags in the HTML file!
 	document.getElementById('numberTweets').innerText = tweet_array.length;	
 
 	const options = {
+		timeZone: "UTC",
 		weekday: "long",
   		year: "numeric",
   		month: "long",
@@ -37,8 +37,7 @@ function parseTweets(runkeeper_tweets) {
 	document.getElementsByClassName('miscellaneousPct')[0].innerText = formatPct(tweet_type_counts[3]/tweet_array.length);
 	document.getElementsByClassName('completedEvents')[1].innerText = tweet_type_counts[0];
 	document.getElementsByClassName('written')[0].innerText = tweet_type_counts[4];
-	document.getElementsByClassName('writtenPct')[0].innerText = formatPct(tweet_type_counts[4]/tweet_array.length);;
-	
+	document.getElementsByClassName('writtenPct')[0].innerText = formatPct(tweet_type_counts[4]/tweet_array.length);
 }
 
 function formatPct(value)
